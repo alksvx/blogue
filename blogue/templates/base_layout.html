@@ -1,0 +1,53 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Articles</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+    <body>
+
+        <header class="wrapper">
+            <h1><a href="{% url 'home' %}"><img src="{% static 'logo1.png' %}" alt="blogue"/></a></h1>
+
+            <nav>
+                <ul>
+
+                     <div class="dropdown">
+                    <button class="dropbtn"><img src="{% static 'menu1.png' %}" alt="menu"/></button>
+                    <div class="dropdown-content">
+                    <a href="{% url 'home' %}">Главная страница</a>
+                    <a href="{% url 'about' %}">О нас</a>
+                    <a href="{% url 'contacts' %}">Контакты</a>
+
+
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'accounts:user'%}">Личный кабинет</a>
+                    {% else %}
+                    <a href="{% url 'accounts:login'%}">Войти</a>
+                    {% endif %}
+
+
+
+                 </ul>
+              </div>
+            </div>
+            </nav>
+
+
+        </header>
+        <div class="wrapper">
+
+            {% block content %}
+            {% endblock %}
+        </div>
+
+        <footer>
+            <li><a href="https://vk.com" class="socialnet"><img src="{% static 'vk.jpg' %}"></a></li>
+            <li><a href="https://www.youtube.com/" class="socialnet"><img src="{% static 'yt2.jpg' %}"></a></li>
+            <li><a href="https://web.telegram.org" class="socialnet"><img src="{% static 'tg1.png' %}"></a></li>
+        </footer>
+    </body>
+</html>

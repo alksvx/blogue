@@ -1,0 +1,29 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+
+<div class="article-detail">
+    <div class="article">
+
+        <img src="{{ article.thumb.url }}">
+        <h2>{{ article.title }}</h2>
+        <p>{{ article.body }}</p>
+        <div class="categories">
+            <p>{{ article.date }}</p>
+            <p>Категория: {{article.category}}</p>
+            <p>Добавлено {{ article.author.username }}</p>
+        </div>
+
+
+
+    </div>
+    <a href="#" onclick="history.back();return false;" class="history-back">Вернуться назад</a>
+    {% if user.is_authenticated %}
+    <a href="{% url 'articles:edit' slug=article.slug %}" class="edit">Редактировать</a>
+    {% endif %}
+
+
+
+    </div>
+</div>
+{% endblock %}

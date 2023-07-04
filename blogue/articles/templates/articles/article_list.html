@@ -1,0 +1,24 @@
+{% extends 'base_layout.html' %}
+{% block content %}
+
+  <div class="articles">
+      {% for article in articles %}
+      <div class="article">
+          <div class="row">
+          <? for($i=0; $i < count($alumni); $i++) { ?>
+            <div class="span2">
+                <h2><a href="{% url 'articles:detail' slug=article.slug %}">{{article.title}}</a></h2>
+                <a href="{% url 'articles:detail' slug=article.slug %}"><img src="{{ article.thumb.url }}"></a>
+            </div>
+             <? } ?>
+            </div>
+              <a href="{% url 'articles:detail' slug=article.slug %}"><p>{{article.snippet}}</p></a>
+              <p>{{article.date}}</p>
+
+              <p class="author"> добавлено {{ article.author.username }}</p>
+            </div>
+      {% endfor %}
+  </div>
+{% endblock %}
+
+
