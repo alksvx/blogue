@@ -13,25 +13,31 @@
             <h1><a href="{% url 'home' %}"><img src="{% static 'logo1.png' %}" alt="blogue"/></a></h1>
 
             <nav>
-                <ul>
-
+                <li>
                      <div class="dropdown">
                     <button class="dropbtn"><img src="{% static 'menu1.png' %}" alt="menu"/></button>
                     <div class="dropdown-content">
                     <a href="{% url 'home' %}">Главная страница</a>
                     <a href="{% url 'about' %}">О нас</a>
                     <a href="{% url 'contacts' %}">Контакты</a>
-
-
                     {% if user.is_authenticated %}
-                    <a href="{% url 'accounts:user'%}">Личный кабинет</a>
+
+                        <a href="{% url 'articles:create' %}" class="highlight">Новая статья</a>
+                        <form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
+                                {% csrf_token %}
+                        <button type="submit">Выйти</button>
+                        </form>
+
                     {% else %}
-                    <a href="{% url 'accounts:login'%}">Войти</a>
+                        <a href="{% url 'accounts:login'%}">Войти</a>
                     {% endif %}
 
 
 
-                 </ul>
+
+
+
+                 </li>
               </div>
             </div>
             </nav>

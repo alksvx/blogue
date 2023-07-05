@@ -1,20 +1,12 @@
 {% extends 'base_layout.html' %}
 {% block content %}
-{% if user.is_authenticated %}
-
 <h2>Личный кабинет</h2>
-<a href="#" class="edit_profile">Заполнить профиль</a>
 
 
 <li>
-    <form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
-        {% csrf_token %}
-        <button type="submit">Выйти</button>
-    </form>
+
 </li>
-<li><a href="{% url 'articles:create' %}" class="highlight">Новая статья</a></li>
+<li></li>
 
-
-{% endif %}
 
 {% endblock %}
